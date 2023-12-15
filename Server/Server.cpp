@@ -8,7 +8,7 @@ Server::Server(QWidget *parent) : QMainWindow(parent), ui(new Ui::Server)
     connect(server, SIGNAL(newConnection()), this, SLOT(newConnection()));
     
     QString socket_data;
-    socket_data = QString("Listening: %1").arg(server->listen(QHostAddress::Any, 8888) ? "true" : "false");
+    socket_data = QString("Listening: %1\n").arg(server->listen(QHostAddress::Any, 8888) ? "true" : "false");
     ui->textEdit->insertPlainText(socket_data);
 } 
 

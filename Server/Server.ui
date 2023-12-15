@@ -29,34 +29,8 @@
       <x>20</x>
       <y>10</y>
       <width>691</width>
-      <height>371</height>
+      <height>431</height>
      </rect>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>410</y>
-      <width>551</width>
-      <height>25</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="sendButton">
-    <property name="geometry">
-     <rect>
-      <x>600</x>
-      <y>410</y>
-      <width>111</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="locale">
-     <locale language="Korean" country="SouthKorea"/>
-    </property>
-    <property name="text">
-     <string>전송</string>
     </property>
    </widget>
   </widget>
