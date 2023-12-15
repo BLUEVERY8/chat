@@ -18,12 +18,14 @@ public:
     ~Server();
 signals:
     void receiveMsg(QByteArray);
+    void receiveFile(const QString);
 
 private slots:
     void newConnection();
     void disconnected();
     void readyRead();
     void sendMsg(const QString &data, QTcpSocket *senderSocket);
+    void sendFile();
 
 private:
     Ui::Server *ui;

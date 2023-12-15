@@ -36,8 +36,8 @@
    <widget class="QLineEdit" name="lineEdit">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>410</y>
+      <x>20</x>
+      <y>400</y>
       <width>551</width>
       <height>25</height>
      </rect>
@@ -47,7 +47,7 @@
     <property name="geometry">
      <rect>
       <x>600</x>
-      <y>410</y>
+      <y>400</y>
       <width>111</width>
       <height>25</height>
      </rect>
@@ -59,6 +59,32 @@
      <string>전송</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButtonSendFile">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>430</y>
+      <width>89</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>파일 전송</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonReceiveFile">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>430</y>
+      <width>89</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>파일 저장</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -66,7 +92,7 @@
      <x>0</x>
      <y>0</y>
      <width>729</width>
-     <height>28</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

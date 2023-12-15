@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'Client.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.8
+** Created by: Qt User Interface Compiler version 5.15.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -29,6 +29,8 @@ public:
     QTextEdit *textEdit;
     QLineEdit *lineEdit;
     QPushButton *sendButton;
+    QPushButton *pushButtonSendFile;
+    QPushButton *pushButtonReceiveFile;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -46,15 +48,21 @@ public:
         textEdit->setGeometry(QRect(20, 10, 691, 371));
         lineEdit = new QLineEdit(centralwidget);
         lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-        lineEdit->setGeometry(QRect(30, 410, 551, 25));
+        lineEdit->setGeometry(QRect(20, 400, 551, 25));
         sendButton = new QPushButton(centralwidget);
         sendButton->setObjectName(QString::fromUtf8("sendButton"));
-        sendButton->setGeometry(QRect(600, 410, 111, 25));
+        sendButton->setGeometry(QRect(600, 400, 111, 25));
         sendButton->setLocale(QLocale(QLocale::Korean, QLocale::SouthKorea));
+        pushButtonSendFile = new QPushButton(centralwidget);
+        pushButtonSendFile->setObjectName(QString::fromUtf8("pushButtonSendFile"));
+        pushButtonSendFile->setGeometry(QRect(20, 430, 89, 25));
+        pushButtonReceiveFile = new QPushButton(centralwidget);
+        pushButtonReceiveFile->setObjectName(QString::fromUtf8("pushButtonReceiveFile"));
+        pushButtonReceiveFile->setGeometry(QRect(120, 430, 89, 25));
         Client->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Client);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 729, 28));
+        menubar->setGeometry(QRect(0, 0, 729, 22));
         Client->setMenuBar(menubar);
         statusbar = new QStatusBar(Client);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -67,8 +75,10 @@ public:
 
     void retranslateUi(QMainWindow *Client)
     {
-        Client->setWindowTitle(QApplication::translate("Client", "Talk", nullptr));
-        sendButton->setText(QApplication::translate("Client", "\354\240\204\354\206\241", nullptr));
+        Client->setWindowTitle(QCoreApplication::translate("Client", "Talk", nullptr));
+        sendButton->setText(QCoreApplication::translate("Client", "\354\240\204\354\206\241", nullptr));
+        pushButtonSendFile->setText(QCoreApplication::translate("Client", "\355\214\214\354\235\274 \354\240\204\354\206\241", nullptr));
+        pushButtonReceiveFile->setText(QCoreApplication::translate("Client", "\355\214\214\354\235\274 \354\240\200\354\236\245", nullptr));
     } // retranslateUi
 
 };

@@ -1,5 +1,6 @@
 #include "Client.h"
 #include "ui_Client.h"
+#include <QFileDialog>
 
 Client::Client(const QString &username, QWidget *parent) :
     QMainWindow(parent),
@@ -9,6 +10,7 @@ Client::Client(const QString &username, QWidget *parent) :
     ui->setupUi(this);
     socket = new QTcpSocket(this);
     fd_flag = connectToHost("127.0.0.1");
+    QByteArray data;
 
     if (!fd_flag)
         ui->textEdit->insertPlainText("Socket connect fail\n");
@@ -23,6 +25,7 @@ bool Client::connectToHost(QString host)
 {
     socket->connectToHost(host, 8888);
     connect(socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
+    connect(socket, SIGNAL(receiveFile()), this, SLOT(receiveFile()));
     return socket->waitForConnected();
 }
 
@@ -51,10 +54,42 @@ void Client::on_sendButton_clicked()
     }
 }
 
+void Client::sendFile(const QString &filePath)
+{
+    QFile file(filePath);
+    if (!file.open(QIODevice::ReadOnly)) {
+        qWarning() << "Error: Unable to open file for reading";
+        return;
+    }
+
+    QByteArray fileData = file.readAll();
+    file.close();
+
+    socket->write(fileData);
+    emit sendFile();
+
+}
+
+void Client::on_pushButtonSendFile_clicked()
+{
+    QString filePath = QFileDialog::getOpenFileName(this, "Select a file to send");
+    if (!filePath.isEmpty()) {
+        sendFile(filePath);
+    }
+}
+
+void Client::on_pushButtonReceiveFile_clicked()
+{
+    QString filePath = QFileDialog::getSaveFileName(this, "Save received file");
+    if (!filePath.isEmpty()) {
+        receiveFile(filePath);
+    }
+}
+
 void Client::readyRead()
 {
     while (socket->bytesAvailable() > 0) {
-        QByteArray data = socket->readAll();
+        data = socket->readAll();
         ui->textEdit->insertPlainText(QString(data) + "\r\n");
     }
 }
@@ -62,6 +97,18 @@ void Client::readyRead()
 void Client::receiveMsg(QByteArray data)
 {
     ui->textEdit->insertPlainText(QString(data) + "\r\n");
+}
+
+void Client::receiveFile(const QString &filePath)
+{
+    QFile file(filePath);
+    if (!file.open(QIODevice::WriteOnly)) {
+        qWarning() << "Error: Unable to open file for writing";
+        return;
+    }
+
+    file.write(data);
+    file.close();
 }
 
 int main(int argc, char **argv)

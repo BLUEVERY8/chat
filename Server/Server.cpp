@@ -25,6 +25,7 @@ void Server::newConnection()
         ui->textEdit->insertPlainText("Connected from " + QString::number(cnt++) + "\r\n");
         connect(socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
         connect(socket, SIGNAL(disconnected()), this, SLOT(disconnected()));
+        connect(socket, SIGNAL(sendFile()), this, SLOT(sendFile()));
         sockets.append(socket);
         QByteArray *buffer = new QByteArray();
         buffers.insert(socket, buffer);
@@ -61,6 +62,22 @@ void Server::sendMsg(const QString &data, QTcpSocket *senderSocket)
     foreach (QTcpSocket *socket, sockets) {
         if (socket != senderSocket) {
             socket->write(data.toUtf8());
+            socket->waitForBytesWritten();
+        }
+    }
+}
+
+void Server::sendFile()
+{
+    QTcpSocket *senderSocket = static_cast<QTcpSocket*>(sender());
+
+
+    QByteArray fileData = senderSocket->readAll();
+
+    // Broadcast the file data to all clients
+    for (QTcpSocket *socket : sockets) {
+        if (socket != senderSocket) {
+            socket->write(fileData);
             socket->waitForBytesWritten();
         }
     }
