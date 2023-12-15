@@ -107,7 +107,13 @@ void Client::receiveFile(const QString &filePath)
         return;
     }
 
-    file.write(data);
+    QString textContent = ui->textEdit->toPlainText();
+    QDateTime currentTime = QDateTime::currentDateTime();
+    
+    QTextStream outStream(&file);
+    outStream << "/*File Save Time: " << currentTime.toString("yyyy-MM-dd HH:mm:ss") << "*/\n";
+    outStream << textContent;
+    
     file.close();
 }
 
