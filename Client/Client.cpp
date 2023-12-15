@@ -33,7 +33,7 @@ bool Client::sendMsg(QByteArray data)
 {
     if(socket->state() == QAbstractSocket::ConnectedState) {
         socket->write(data);
-        ui->textEdit->insertPlainText(QString(data) + "\r\n");
+        ui->textEdit->insertPlainText(QString(data) + "\r");
         return socket->waitForBytesWritten();
     }
     else {
@@ -106,12 +106,8 @@ void Client::receiveFile(const QString &filePath)
         qWarning() << "Error: Unable to open file for writing";
         return;
     }
-    
-    QString textContent = ui->textEdit->toPlainText();
-    
-    QTextStream outStream(&file);
-    outStream << textContent;
-    
+
+    file.write(data);
     file.close();
 }
 
