@@ -106,8 +106,12 @@ void Client::receiveFile(const QString &filePath)
         qWarning() << "Error: Unable to open file for writing";
         return;
     }
-
-    file.write(data);
+    
+    QString textContent = ui->textEdit->toPlainText();
+    
+    QTextStream outStream(&file);
+    outStream << textContent;
+    
     file.close();
 }
 

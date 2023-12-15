@@ -62,7 +62,7 @@ public:
         Client->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Client);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 729, 22));
+        menubar->setGeometry(QRect(0, 0, 729, 28));
         Client->setMenuBar(menubar);
         statusbar = new QStatusBar(Client);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -75,7 +75,7 @@ public:
 
     void retranslateUi(QMainWindow *Client)
     {
-        Client->setWindowTitle(QCoreApplication::translate("Client", "Talk", nullptr));
+        Client->setWindowTitle(QCoreApplication::translate("Client", "\355\201\264\353\235\274\354\235\264\354\226\270\355\212\270", nullptr));
         sendButton->setText(QCoreApplication::translate("Client", "\354\240\204\354\206\241", nullptr));
         pushButtonSendFile->setText(QCoreApplication::translate("Client", "\355\214\214\354\235\274 \354\240\204\354\206\241", nullptr));
         pushButtonReceiveFile->setText(QCoreApplication::translate("Client", "\355\214\214\354\235\274 \354\240\200\354\236\245", nullptr));

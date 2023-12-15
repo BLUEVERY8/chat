@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'Server.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.8
+** Created by: Qt User Interface Compiler version 5.15.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -67,8 +67,8 @@ public:
 
     void retranslateUi(QMainWindow *Server)
     {
-        Server->setWindowTitle(QApplication::translate("Server", "Talk", nullptr));
-        sendButton->setText(QApplication::translate("Server", "\354\240\204\354\206\241", nullptr));
+        Server->setWindowTitle(QCoreApplication::translate("Server", "\354\204\234\353\262\204", nullptr));
+        sendButton->setText(QCoreApplication::translate("Server", "\354\240\204\354\206\241", nullptr));
     } // retranslateUi
 
 };
